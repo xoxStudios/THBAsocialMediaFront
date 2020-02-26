@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../Context/auth/authContext";
-import logo from "../../media/image/logo/BubbleLogoGroß.png"
+import logo from "../../media/image/logo/BubbleLogoGroß.png";
+import { Link } from "react-router-dom";
 
 const Login = props => {
   const authContext = useContext(AuthContext);
@@ -42,7 +43,7 @@ const Login = props => {
 
   return (
     <div className="content-wrapper">
-        <img className="login-logo" src={logo} alt="logo"/>
+      <img className="login-logo" src={logo} alt="logo" />
       <div className="form-container">
         <form onSubmit={onSubmit}>
           <div className="form-group">
@@ -74,9 +75,14 @@ const Login = props => {
           />
         </form>
       </div>
-      <button className="btn btn-link btn-secondary"style={{marginTop:"2rem"}} >
+      <Link to="/register" style={{ textDecoration: "none" }}>
+        <button
+          className="btn btn-link btn-secondary"
+          style={{ marginTop: "2rem" }}
+        >
           Sign In
         </button>
+      </Link>
     </div>
   );
 };

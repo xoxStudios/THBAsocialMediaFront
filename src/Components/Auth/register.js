@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../Context/auth/authContext";
+import logo from "../../media/image/logo/BubbleLogoGroß.png";
 
 const Register = props => {
   const authContext = useContext(AuthContext);
@@ -44,6 +45,8 @@ const Register = props => {
   };
 
   return (
+    <div className="content-wrapper">
+      <img className="login-logo" src={logo} alt="logo" />
       <div className="form-container">
         <form onSubmit={onSubmit}>
           <div className="form-group">
@@ -99,7 +102,7 @@ const Register = props => {
           />
         </form>
       </div>
-
+    </div>
   );
 };
 
