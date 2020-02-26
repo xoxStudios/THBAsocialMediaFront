@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../Context/auth/authContext";
+import logo from "../../media/image/logo/BubbleLogoGroß.png"
 
 const Login = props => {
   const authContext = useContext(AuthContext);
@@ -40,39 +41,42 @@ const Login = props => {
   };
 
   return (
-    <div className="form-container">
-      <h1>
-        Account <span className="text-primary">Login</span>
-      </h1>
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
+    <div className="content-wrapper">
+        <img className="login-logo" src={logo} alt="logo"/>
+      <div className="form-container">
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              required
+              placeholder="E-Mail"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              required
+              placeholder="Password"
+            />
+          </div>
           <input
-            id="email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={onChange}
-            required
+            type="submit"
+            value="Sign Up"
+            className="btn btn-block btn-primary"
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <input
-          type="submit"
-          value="Login"
-          className="btn btn-primary btn-block"
-        />
-      </form>
+        </form>
+      </div>
+      <button className="btn btn-link btn-secondary"style={{marginTop:"2rem"}} >
+          Sign In
+        </button>
     </div>
   );
 };
