@@ -1,28 +1,31 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./Components/Navigation/Navbar";
-import Footer from "./Components/Navigation/Footer";
-import Register from "./Components/Register";
-import Landing from "./Components/Landing";
-import UserState from "./Context/userState";
+import Navbar from "./Components/Navigation/navbar";
+import Footer from "./Components/Navigation/footer";
+import Home from "./Components/home";
+import Register from "./Components/Auth/register";
+import Login from "./Components/Auth/login";
+import AuthState from "./Context/auth/authState";
+import PrivateRoute from "./Components/routing/privateRoute";
 import "./App.css";
 
 const App = () => {
   return (
-    <UserState>
+    <AuthState>
       <Router>
         <Fragment>
           <Navbar />
           <div className="container">
             <Switch>
-              <Route exact path="/" component={Landing} />
+              <PrivateRoute exact path="/" component={Home} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
             </Switch>
           </div>
           <Footer />
         </Fragment>
       </Router>
-    </UserState>
+    </AuthState>
   );
 };
 
