@@ -30,7 +30,7 @@ const AuthState = props => {
     setAuthToken(localStorage.token);
 
     try {
-      const res = await axios.get("http://localhost:8080/api/auth");
+      const res = await axios.get("http://localhost:8080/api/auth/user");
 
       dispatch({
         type: USER_LOADED,
@@ -51,7 +51,7 @@ const AuthState = props => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/users",
+        "http://localhost:8080/api/auth/register",
         formData,
         config
       );
@@ -80,7 +80,7 @@ const AuthState = props => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/auth",
+        "http://localhost:8080/api/auth/login",
         formData,
         config
       );
