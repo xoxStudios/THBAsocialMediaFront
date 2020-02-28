@@ -27,8 +27,8 @@ const Home = props => {
     </div>
   ) : user.groups.length < 1 ? (
     <Router>
-      <div>
-        <Navbar />
+      <Navbar />
+      <div className="main-content">
         Du bist noch keiner Bubble beigetreten Suche nach Bubbles{" "}
         <Link to="/user/groups" style={{ textDecoration: "none" }}>
           <button
@@ -48,8 +48,8 @@ const Home = props => {
           </button>
         </Link>
         <button onClick={logout}>LOGOUT</button>
-        <Footer />
       </div>
+      <Footer />
     </Router>
   ) : (
     <div>

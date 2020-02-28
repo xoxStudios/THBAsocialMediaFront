@@ -64,7 +64,7 @@ const Login = props => {
           </div>
           <input
             type="submit"
-            value="Sign Up"
+            value="Sign In"
             className="btn btn-block btn-primary"
           />
         </form>
@@ -74,7 +74,7 @@ const Login = props => {
           className="btn btn-link btn-secondary"
           style={{ marginTop: "2rem" }}
         >
-          Sign In
+          Sign Up
         </button>
       </Link>
     </div>
