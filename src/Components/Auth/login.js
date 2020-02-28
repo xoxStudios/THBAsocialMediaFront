@@ -6,19 +6,13 @@ import { Link } from "react-router-dom";
 const Login = props => {
   const authContext = useContext(AuthContext);
 
-  const { login, error, clearErrors, isAuthenticated } = authContext;
+  const { login, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/");
     }
-
-    if (error === "Invalid Credentials") {
-      console.log(error, "danger");
-      clearErrors();
-    }
-    // eslint-disable-next-line
-  }, [error, isAuthenticated, props.history]);
+  }, [isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     email: "",

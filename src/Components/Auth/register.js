@@ -4,19 +4,13 @@ import logo from "../../media/image/logo/BubbleLogoGroß.png";
 
 const Register = props => {
   const authContext = useContext(AuthContext);
-  const { register, error, clearErrors, isAuthenticated } = authContext;
+  const { register, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/");
     }
-
-    if (error === "User already exists") {
-      console.log(error, "danger");
-      clearErrors();
-    }
-    // eslint-disable-next-line
-  }, [error, isAuthenticated, props.history]);
+  }, [isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     name: "",

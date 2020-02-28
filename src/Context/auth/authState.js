@@ -7,18 +7,16 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT,
-  CLEAR_ERRORS
+  LOGOUT
 } from "../types";
 
 const AuthState = props => {
   const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
-    loading: true,
+    loading: false,
     user: null,
     error: null
   };
@@ -37,7 +35,7 @@ const AuthState = props => {
         payload: res.data
       });
     } catch (err) {
-      dispatch({ type: AUTH_ERROR });
+      dispatch({ type: err });
     }
   };
 
@@ -102,9 +100,6 @@ const AuthState = props => {
   // Logout
   const logout = () => dispatch({ type: LOGOUT });
 
-  // Clear Errors
-  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
-
   return (
     <AuthContext.Provider
       value={{
@@ -112,12 +107,10 @@ const AuthState = props => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         user: state.user,
-        error: state.error,
         register,
         loadUser,
         login,
-        logout,
-        clearErrors
+        logout
       }}
     >
       {props.children}
