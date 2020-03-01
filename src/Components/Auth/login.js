@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../Context/auth/authContext";
-import logo from "../../media/image/logo/BubbleLogoGroß.png";
+import logoform from "../../media/image/logo/BubbleLogoKlein.svg";
+import logotext from "../../media/image/logo/BubbleLogoSchrift.svg";
 import { Link } from "react-router-dom";
 
 const Login = props => {
@@ -37,7 +38,12 @@ const Login = props => {
 
   return (
     <div className="content-wrapper">
-      <img className="login-logo" src={logo} alt="logo" />
+      <div className="logo-group">
+        <div className="login-logo-form1">
+          <embed className="login-logo-form2" src={logoform} alt="logo" />
+        </div>
+        <embed className="login-logo-text" src={logotext} alt="logo" />
+      </div>
       <div className="form-container">
         <form onSubmit={onSubmit}>
           <div className="form-group">
