@@ -8,12 +8,12 @@ const Groups = () => {
 
   useEffect(() => {
     getGroup();
-  }, []);
+  }, [groups]);
 
   return !!groups ? (
     <div>
-      {groups.map(group => {
-        return <li>group.title</li>;
+      {Object.keys(groups).map(group => {
+        return <li>group</li>;
       })}
     </div>
   ) : (

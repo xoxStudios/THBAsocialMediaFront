@@ -64,6 +64,7 @@ const GroupState = props => {
     <GroupContext.Provider
       value={{
         groupGlobal: state.groupGlobal,
+        groups: state.groups,
         current: state.current,
         error: state.error,
         createGroup,
