@@ -4,7 +4,9 @@ import {
   USER_LOADED,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  QUERY_RELATION_SUCCES,
+  QUERY_RELATION_FAIL
 } from "../types";
 
 export default (state, action) => {
@@ -15,7 +17,6 @@ export default (state, action) => {
         user: action.payload
       };
     case REGISTER_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
       return {};
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -26,12 +27,16 @@ export default (state, action) => {
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case LOGOUT:
+      localStorage.removeItem("User Data");
       localStorage.removeItem("token");
       return {
         ...state,
         token: null,
-        error: action.payload
+        error: action.payload,
+        user: null
       };
+    case QUERY_RELATION_SUCCES:
+    case QUERY_RELATION_FAIL:
     default:
       return state;
   }

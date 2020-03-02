@@ -1,7 +1,24 @@
 import React from "react";
+import { useEffect, useContext } from "react";
+import GroupContext from "../Context/group/groupContext";
 
-const groups = () => {
-  return <div>groups</div>;
+const Groups = () => {
+  const authContext = useContext(GroupContext);
+  const { getGroup, groups } = authContext;
+
+  useEffect(() => {
+    getGroup();
+  }, []);
+
+  return !!groups ? (
+    <div>
+      {groups.map(group => {
+        return <li>group.title</li>;
+      })}
+    </div>
+  ) : (
+    <div>Spinner</div>
+  );
 };
 
-export default groups;
+export default Groups;

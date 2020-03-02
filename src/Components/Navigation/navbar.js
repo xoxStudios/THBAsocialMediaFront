@@ -1,25 +1,26 @@
 import React from "react";
 import logo from "../../media/image/logo/BubbleLogoGroß.svg";
-import settingsIcon from "../../media/image/util/SettingsIcon.svg";
-import userIcon from "../../media/image/util/UserIcon.svg";
 
 const Navbar = () => {
+  let showSettings = e => {
+    e.preventDefault();
+    return (
+      <div style={{ position: "absolute", left: "0", top: "0" }}>"hallo"</div>
+    );
+  };
+
   return (
     <div className="navbar">
       <ul className="navigation-list">
-        <li className="navigation-list-item-icon">
-          <embed
-            src={settingsIcon}
-            className="navbar-icon"
-            alt="Settingsicon"
-          />
-        </li>
+        <button onClick={showSettings} className="navbar-button-left">
+          <i className="material-icons icon-shadow-left">settings</i>
+        </button>
         <li className="navigation-list-item-logo">
           <embed src={logo} className="navbar-logo" alt="Bubble Logo Navbar" />
         </li>
-        <li className="navigation-list-item-icon">
-          <embed src={userIcon} className="navbar-icon" alt="Settingsicon" />
-        </li>
+        <button className="navbar-button-right">
+          <i className="material-icons icon-shadow-right">person</i>
+        </button>
       </ul>
     </div>
   );

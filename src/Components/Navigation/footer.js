@@ -1,33 +1,22 @@
 import React from "react";
 import logo from "../../media/image/logo/BubbleLogoKlein.svg";
-import filter from "../../media/image/util/FilterTriangle.svg";
-import notification from "../../media/image/util/NotificationBell.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="footer">
       <ul className="navigation-list">
-        <li className="navigation-list-item-icon">
-          <embed
-            src={filter}
-            className="navbar-icon-footer"
-            alt="Settingsicon"
-          />
-        </li>
-        <li className="navigation-list-item-logo-small">
-          <embed
-            src={logo}
-            className="navbar-logo-small"
-            alt="Bubble Logo Navbar"
-          />
-        </li>
-        <li className="navigation-list-item-icon">
-          <embed
-            src={notification}
-            className="navbar-icon-footer"
-            alt="Settingsicon"
-          />
-        </li>
+        <button className="navbar-button-left">
+          <i className="material-icons icon-shadow-left ">play_arrow</i>
+        </button>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <button className="navbar-button-center">
+            <i className="material-icons logo-icon">bubble_chart</i>
+          </button>
+        </Link>
+        <button className="navbar-button-left">
+          <i className="material-icons icon-shadow-right">notifications</i>
+        </button>
       </ul>
     </div>
   );

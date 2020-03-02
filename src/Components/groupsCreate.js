@@ -19,9 +19,10 @@ const GroupsCreate = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (title === "" || theme === "" || description === "") {
-      console.log("Please enter all fields", "danger");
+      console.log("Please enter all fields");
     } else {
       createGroup({
+        UserID: JSON.parse(localStorage.getItem("User Data"))._id,
         title,
         theme,
         description

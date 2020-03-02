@@ -4,24 +4,25 @@ import logo from "../../media/image/logo/BubbleLogoGroß.png";
 
 const Register = props => {
   const authContext = useContext(AuthContext);
-  const { register, isAuthenticated } = authContext;
+  const { register, token } = authContext;
 
   useEffect(() => {
-    if (isAuthenticated) {
-      props.history.push("/");
+    if (token) {
+      props.history.push("/login");
     }
-  }, [isAuthenticated, props.history]);
+  }, [token, props.history]);
 
-  const [user, setUser] = useState({
+  const [userLocal, setUserLocal] = useState({
     name: "",
     email: "",
     password: "",
     password2: ""
   });
 
-  const { name, email, password, password2 } = user;
+  const { name, email, password, password2 } = userLocal;
 
-  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+  const onChange = e =>
+    setUserLocal({ ...userLocal, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();

@@ -94,15 +94,53 @@ li.navigation-list-item-icon {
 }
 
 .navbar-logo-small {
-  width: 35%;
+  width: 30%;
 }
 
 .navbar-icon {
   width: 3rem;
+  cursor: pointer;
 }
 
-.navbar-icon-footer {
-  width: 3rem;
+.material-icons {
+  font-weight: 600;
+  font-size: 2.8rem;
+  cursor: pointer;
+  color: var(--primary-text-color);
+}
+/*
+.icon-shadow-left {
+  box-shadow: 5px 2px 5px var(--shadow-color);
+}
+
+.icon-shadow-right {
+  box-shadow: -5px 2px 5px var(--shadow-color);
+}*/
+
+.navbar-button-center {
+  background-color: rgba(9, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 5.5rem;
+}
+
+.navbar-button-left {
+  background-color: rgba(9, 0, 0, 0);
+  border: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.navbar-button-right {
+  background-color: rgba(9, 0, 0, 0);
+  border: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
 }
 
 .container {
@@ -296,6 +334,10 @@ input.btn.btn-block.btn-primary {
   transition: opacity 0.2s ease-in;
   outline: none;
   border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .btn-link {

@@ -9,7 +9,9 @@ import {
   USER_LOADED,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  QUERY_RELATION_SUCCES,
+  QUERY_RELATION_FAIL
 } from "../types";
 
 const AuthState = props => {
@@ -38,7 +40,7 @@ const AuthState = props => {
   };
 
   // Register User
-  const register = async formData => {
+  const register = async (formData, user_id) => {
     const config = {
       headers: {
         "Content-Type": "application/json"
@@ -56,11 +58,36 @@ const AuthState = props => {
         type: REGISTER_SUCCESS,
         payload: res.data
       });
-
-      loadUser();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
+        payload: err
+      });
+    }
+
+    window.location.reload();
+  };
+
+  const queryRelationGroupUser = async user_id => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/groups/user/relations",
+        user_id,
+        config
+      );
+
+      dispatch({
+        type: QUERY_RELATION_SUCCES,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: QUERY_RELATION_FAIL,
         payload: err
       });
     }
@@ -98,6 +125,7 @@ const AuthState = props => {
   // Logout
   const logout = () => {
     dispatch({ type: LOGOUT });
+    window.location.reload();
   };
 
   return (

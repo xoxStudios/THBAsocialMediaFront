@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 const Login = props => {
   const authContext = useContext(AuthContext);
 
-  const { login } = authContext;
+  const { login, token } = authContext;
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (token) {
       props.history.push("/");
     }
   });

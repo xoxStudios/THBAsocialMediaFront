@@ -7,13 +7,14 @@ import { CREATE_GROUP, GET_GROUP } from "../types";
 const GroupState = props => {
   const initialState = {
     groupGlobal: null,
+    groups: [],
     current: null,
     error: null
   };
 
   const [state, dispatch] = useReducer(groupReducer, initialState);
 
-  const getGroup = async formData => {
+  const getGroup = async () => {
     const config = {
       headers: {
         "Content-Type": "application/json"
@@ -21,11 +22,7 @@ const GroupState = props => {
     };
 
     try {
-      const res = await axios.get(
-        "http://localhost:8080/api/groups",
-        formData,
-        config
-      );
+      const res = await axios.get("http://localhost:8080/api/groups", config);
 
       dispatch({
         type: GET_GROUP,

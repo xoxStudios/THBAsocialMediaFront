@@ -10,7 +10,7 @@ export default (state, action) => {
     case GET_GROUP:
       return {
         ...state,
-        groupGlobal: action.payload
+        groups: action.payload
       };
 
     default:
