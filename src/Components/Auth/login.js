@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 const Login = props => {
   const authContext = useContext(AuthContext);
 
-  const { login, isAuthenticated } = authContext;
+  const { login } = authContext;
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (localStorage.getItem("token")) {
       props.history.push("/");
     }
-  }, [isAuthenticated, props.history]);
+  });
 
   const [user, setUser] = useState({
     email: "",

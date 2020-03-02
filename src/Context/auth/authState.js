@@ -15,8 +15,6 @@ import {
 const AuthState = props => {
   const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
-    loading: false,
     user: null,
     error: null
   };
@@ -98,14 +96,14 @@ const AuthState = props => {
   };
 
   // Logout
-  const logout = () => dispatch({ type: LOGOUT });
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+  };
 
   return (
     <AuthContext.Provider
       value={{
         token: state.token,
-        isAuthenticated: state.isAuthenticated,
-        loading: state.loading,
         user: state.user,
         register,
         loadUser,

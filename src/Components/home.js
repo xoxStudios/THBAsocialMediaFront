@@ -1,62 +1,48 @@
-import React, { useContext, useState, useEffect } from "react";
-import Navbar from "../Components/Navigation/navbar";
-import Footer from "../Components/Navigation/footer";
+import React, { useContext } from "react";
 import AuthContext from "../Context/auth/authContext";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Home = props => {
+const Home = () => {
   const authContext = useContext(AuthContext);
-  const { logout, loadUser, user, loading } = authContext;
-  const [userData, setUserData] = useState(0);
+  const { logout, user } = authContext;
 
-  useEffect(() => {
-    if (user === null) {
-      console.log("No User Data");
-    } else {
-      setUserData(user);
-      const localUserData = JSON.stringify(user);
-      localStorage.setItem("User Data", localUserData);
-    }
-  }, [user]);
+  if (user === null) {
+  } else {
+    localStorage.setItem("User Data", JSON.stringify(user, ["name", "groups"]));
+  }
 
-  return user === null ? (
+  return user === null && !localStorage.getItem("User Data") ? (
     <div>
-      <Navbar />
       <div>Spinner</div>
-      <Footer />
     </div>
-  ) : user.groups.length < 1 ? (
-    <Router>
-      <Navbar />
-      <div className="main-content">
-        Du bist noch keiner Bubble beigetreten Suche nach Bubbles{" "}
-        <Link to="/user/groups" style={{ textDecoration: "none" }}>
-          <button
-            className="btn btn-link btn-secondary"
-            style={{ marginTop: "2rem" }}
-          >
-            Search
-          </button>
-        </Link>
-        Erstelle deine eigene Bubble
-        <Link to="/groups/create" style={{ textDecoration: "none" }}>
-          <button
-            className="btn btn-link btn-secondary"
-            style={{ marginTop: "2rem" }}
-          >
-            Erstellen
-          </button>
-        </Link>
-        <button onClick={logout}>LOGOUT</button>
-      </div>
-      <Footer />
-    </Router>
+  ) : JSON.parse(localStorage.getItem("User Data")).groups.length < 1 ? (
+    <div className="main-content">
+      <h2>
+        Herzlich Willkommen {JSON.parse(localStorage.getItem("User Data")).name}
+      </h2>
+      <br />
+      Du bist noch keiner Bubble beigetreten Suche nach Bubbles{" "}
+      <Link to="/groups" style={{ textDecoration: "none" }}>
+        <button
+          className="btn btn-block btn-primary"
+          style={{ margin: "1.5rem" }}
+        >
+          Search
+        </button>
+      </Link>
+      Erstelle deine eigene Bubble
+      <Link to="/createGroups" style={{ textDecoration: "none" }}>
+        <button
+          className="btn btn-block btn-primary"
+          style={{ margin: "1.5rem" }}
+        >
+          Erstellen
+        </button>
+      </Link>
+    </div>
   ) : (
     <div>
-      <Navbar />
       <button onClick={logout}>LOGOUT</button>
-      <button onClick={loadUser}>LOAD</button>
-      <Footer />
     </div>
   );
 };

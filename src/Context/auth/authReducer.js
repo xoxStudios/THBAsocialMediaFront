@@ -12,19 +12,16 @@ export default (state, action) => {
     case USER_LOADED:
       return {
         ...state,
-        isAuthenticated: true,
-        loading: false,
         user: action.payload
       };
     case REGISTER_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
+      return {};
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
-
       return {
         ...state,
-        ...action.payload,
-        isAuthenticated: true,
-        loading: false
+        ...action.payload
       };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
@@ -33,9 +30,6 @@ export default (state, action) => {
       return {
         ...state,
         token: null,
-        isAuthenticated: false,
-        loading: false,
-        user: null,
         error: action.payload
       };
     default:
